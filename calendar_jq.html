@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Emiliano's Cafe - calendar</title>
+  <meta charset="utf-8"/>
+  <script src="jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css">
+
+  <link rel="stylesheet" type="text/css" href="main.css"/>
+  <link rel="stylesheet" type="text/css" href="calendar_jq.css">
+
+</head>
+<body>
+  <div class="nav">
+    <div class="container">
+    <ul class="pull-left">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu_jq.html">Menu</a></li>
+    
+    </ul>
+    <ul class="pull-right">
+      <li><a href="calendar_jq.html">Calendar</a></li>
+    <li><a href="about_us.html">About Us</a></li>
+    </ul>
+  </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="calendar">
+            <h2>Events Calendar</h2>
+            <p>Hover over the times to learn more about our revolving cast of funky artists!</p>
+            <dl>
+              <dt>4pm. &nbsp; Friday, July 31</dt>
+              <dd id="first-details"><p><strong>David Glodswortherspeilenstein</strong></p>
+              <p>If that name wasn't enough of a mouthful, stop on by for bite to eat, and witness a poetry reading by the man himself.  David takes you on a sensory bending trip through the psyche with his unique and inspiring lyricism.</p>
+              </dd>
+              <dt>7pm. &nbsp; Friday, July 31</dt>
+              <dd><p><strong>Little Deedee and the Funkatrons</strong></p>
+              <p>This feisty collective lays down a cookin' blend of soul and latin rhythms, while sultry frontwoman Deedee sours with ease from vista to ascending vista of vocal perfection.</p></dd>
+              <dt>2pm. &nbsp; Saturday, August 1</dt>
+              <dd><p><strong>Fun with Drums!</strong></p>
+              <p>Come join us for a djembe drum workshop with djembe master Chris Mobeeza.  These workshops are always a hit here at Emiliano's and before you know it you will be pounding away traditional west African rhythms like the Albongo, the Kuku, and the Doundounba.</p></dd>
+              <dt>4pm. &nbsp; Saturday, August 1</dt>
+              <dd><p><strong>Sherrl Shereef</strong></p>
+              <p>The inimitable Ms. Shereef will be showing her 2015 collection of paintings and sculptures.  If you like lamps that don't look like lamps and the artful splattering of yesterday's linguine onto canvas this is one not to be missed.</p></dd>
+              <dt>7pm. &nbsp; Saturday, August 1</dt>
+              <dd><p><strong>The Swiss Shreaking Stepsisters</strong></p>
+              <p>This renegade trio of eunichs have been honing their vocal harmonies in the high mountains of Switzerland for the better part of thirty years.  Join us as we explore the upper ranges of altissimo.  It's probably best to leave the precious glassware at home for this one folks.</p></dd> 
+            </dl>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--
+          <form>
+            <h3>Sign up for our newsletter</h3>
+            <p>Receive regular email updates about what's going on here at Emiliano's.  Just how regular, you ask? That's up to you!<p>
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input type="text" class="form-control" id="inputName">
+              <span id="name-error">*</span>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail1" placeholder="your email here!">
+              <span id="email1-error">*</span>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">Type Your Email Again</label>
+              <input type="email" class="form-control" id="inputEmail2" placeholder="just for fun!">
+              <span id="email2-error">*</span>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox">weekly newsletter</label> &nbsp; &nbsp; &nbsp;
+               <label><input type="checkbox">monthly newsletter</label> &nbsp; &nbsp; &nbsp;
+              <label><input type="checkbox">annual newsletter</label>
+            </div>
+            <button type="submit" class="btn btn-success" onClick="processInfo()">Sign up!</button>
+          </form>
+          -->
+          <form>
+            <h3>Sign up for our newsletter</h3>
+            <p>Receive regular email updates about what's going on here at Emiliano's.  Just how regular, you? That's up to you!</p>
+            <div class="text-label">
+              <div class="form-group">
+                <label for="yourname" class="text-label">Your Name: </label>
+                <input type="text" id="yourname" width="20em">
+                <span id="nameerror">&nbsp;&nbsp;*</span>
+              </div>
+
+              <div class="form-group">
+                <label for="youremail1" class="text-label">Your Email: </label>
+                <input type="text" id="youremail1">
+                <span id="email1error">&nbsp;&nbsp;*</span>
+              </div>
+
+              <div class="form-group">
+                <label for"youremail2" class="text-label">Email again: </label>
+                <input type="text" id="youremail2">
+                <span id="email2error">&nbsp;&nbsp;*</span>
+              </div>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox"> Weekly Newsletter</label>&nbsp;&nbsp;&nbsp;
+              <label><input type="checkbox"> Monthly Newsletter</label>&nbsp;&nbsp;&nbsp;
+              <label><input type="checkbox"> Yearly Newsletter</label>&nbsp;&nbsp;&nbsp;
+            </div>
+            <p><input type="button" value="submit" onClick="processInfo()"></p>
+            <p id="message"> *</p>
+          </form>
+          <div class="thumbnail">
+            <img src="images/photo_gallery/cropped/djembe_cropped.jpg" alt="djembe drum" height="512" width="545">
+          </div>
+        </div>
+      </div>
+          
+          <script type="text/javascript">
+            (function(){
+
+              //hides all definition details
+              $('dd').hide();
+              //on mouse enter of dt, slide down next child, coresponding dd
+              //while sliding up other dd.
+              $('dl').on('mouseenter', 'dt', function(){
+                $(this)
+                  .next()
+                    .slideDown(400)
+                    .siblings('dd').slideUp(400);
+              });
+              //on mouse leave of dl, slide up all dd.
+              $('dl').on('mouseleave', function(){
+                $('dd').slideUp(400);
+              });
+            })();
+          </script>
+          <script type="text/javascript">
+
+            function processInfo() {
+
+              //initialize variables
+              var yourName = document.getElementById('yourname').value;
+              var nameError = document.getElementById('nameerror');
+              var yourEmail1 = document.getElementById('youremail1').value;
+              var email1Error = document.getElementById('email1error');
+              var yourEmail2 = document.getElementById('youremail2').value;
+              var email2Error = document.getElementById('email2error');
+              var formValid = true;
+              var myMsg = document.getElementById('message');
+
+              //check if name is empty
+              if(yourName == "") {
+                nameError.firstChild.nodeValue = " Please enter your name";
+                formValid = false;
+              }
+
+              //check if email1 is empty
+              if(yourEmail1 == "") {
+                email1Error.firstChild.nodeValue = " Please enter your email";
+                formValid = false;
+              } else {
+
+                //check if email2 is empty
+                if(yourEmail2 == "") {
+                  email2Error.firstChild.nodeValue = " Enter your email again, just for fun!";
+                  formValid = false;
+                } else {
+                  if(yourEmail1 != yourEmail2) {
+                    email2Error.firstChild.nodeValue = " Please type your email exactly the second time.";
+                    formValid = false;
+                  }
+                }
+              }
+              if(formValid == true) {
+                myMsg.firstChild.nodeValue = "Thank you for signing up!";
+              }
+            }
+          </script>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Emiliano's Cafe - menu</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="menu_jq.css"/>
+</head>
+<body>
+  <div class="nav">
+    <div class="container">
+  	  <ul class="pull-left">
+    		<li><a href="index.html">Home</a></li>
+    		<li><a href="menu_jq.html">Menu</a></li>
+  	  </ul>
+  	  <ul class="pull-right">
+  	  	<li><a href="calendar_jq.html">Calendar</a></li>
+  		  <li><a href="about_us.html">About Us</a></li>
+  	  </ul>
+    </div>
+  </div>
+  <div class="main menu">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Click on the navigation tabs to explore our menu options</h3>
+          <div class="tab-panels">
+            <ul class="tabs">
+              <li rel="#panel1" class="active">Coffee</li>
+              <li rel="#panel2">Bites</li>
+              <li rel="#panel3">Gelato</li>
+            </ul>
+            
+            <div id="panel1" class="panel active">
+            <h3>Coffee</h3>
+            <p>Espresso</p>
+            <p>Americano</p>
+            <p>Italiano</p>
+            <p>Cubano</p>
+            </div>
+            
+            <div id="panel2" class="panel">
+            <h3>Bites</h3>
+            <p>Baked Cheesy Biscuits</p>
+            <p>Cookie &nbsp;&nbsp;<small>baked fresh every morning</small></p>
+            </div>
+            
+            <div id="panel3" class="panel">
+            <h3>Gelato</h3>
+            <p>Vanilla</p>
+            <p>Dark Chocolate</p>
+            <p>Butterscotch</p>
+            <p>Pistachio</p>
+            <p>Strawberry</p>
+            <p>Cherry</p>
+            </div>
+          </div>
+          
+          <div class="tab-panels">
+            <ul class="tabs">
+              <li rel="#panel5" class="active">Breakfast</li>
+              <li rel="#panel6">Lunch</li>
+              <li rel="#panel7">Salads</li>
+            </ul>
+            
+            <div id="panel5" class="panel active">
+            <h3>Breakfast</h3>
+            <p>Huevos Rancheros &nbsp;&nbsp;<small>eggs and chorizo, mmmm</small></p>
+            <p>Ham Egg and Cheese Melt</p>
+            <p>Oats and Fruits</p>
+            </div>
+            
+            <div id="panel6" class="panel">
+            <h3>Lunch</h3>
+            <p>Mozzarella Tomato Basil Panini</p>
+            <p>Eggplant Panini</p>
+            <p>Bowl'o'Black Beans</p>
+            <p>Steamed Veggies and Rice</p>  
+            </div>
+            
+            <div id="panel7" class="panel">
+              <h3>Salads</h3>
+            <p>Caprise Salad &nbsp;&nbsp;<small>pear, arugala, romain, and spinach</small></p>
+            <p>Bell Pepper Salad &nbsp;&nbsp;<small>bell peppers, corn, avocado, beans and salsa</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="thumbnail">
+            <img src="images/photo_gallery/cropped/flowerprint_cl_cropped.jpg" alt="flowerprint" height="512" width="545">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+    <script src="jquery.js"></script>
+    <script>
+      $(function(){
+        $('.tab-panels .tabs li').on('click', function(){
+          //find out which set of panels was clicked on
+          var $panel = $(this).closest('.tab-panels');
+          
+          //switch out the active tab        
+          $panel.find('.tabs li.active').removeClass('active');
+          $(this).addClass('active');
+          
+          //figure out which panel to show
+          var panelToShow = $(this).attr('rel');
+          
+          //hide current panel
+          $panel.find('.panel.active').slideUp(300, showNextPanel);
+          
+          //show next panel
+          function showNextPanel(){
+            $(this).removeClass('active');
+            $(panelToShow).slideDown(300, function(){
+              $(this).addClass('active');
+            });
+          }
+          
+        });
+      });
+    </script>
+</body>
+</html>

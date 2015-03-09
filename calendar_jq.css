@@ -1,0 +1,57 @@
+.calendar p {
+	font-size: 18px;
+}
+
+h2 {
+	margin-top: 1em;
+}
+
+dl {
+	margin-top: 30px;
+}
+
+dd {
+	margin: 0;
+	padding: 1em 0;
+
+}
+
+dt {
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 2em;
+	background: #e3e3e3;
+	border-bottom: 2px solid #c5c5c5;
+	border-top: 1px solid white;
+	padding-top: 10px;
+	color: #773333;
+}
+
+dt:first-child{
+	border-top: none;
+}
+
+dt:nth-last-child(2){
+	border-bottom: none;
+}
+
+form label {
+	width: 12em;
+}
+
+form .text-label label {
+	float: left;
+	width: 5.9em;
+	text-align: right;
+	margin-right: 1em;
+}
+
+form span {
+	color: #ff0000;
+}
+
+form #message {
+	color: #00aa00;
+	font-size: 20px;
+}
